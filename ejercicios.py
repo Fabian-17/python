@@ -12,13 +12,17 @@ print(orden(lista))
 
 # [1, 2, 2, 2, 3, 2, 1]
 
-contador = {}
+def ordenar_y_contar(lista):
+    frecuencia = {}
+    for elemento in lista:
+        if elemento in frecuencia:
+            frecuencia[elemento] += 1
+        else:
+            frecuencia[elemento] = 1
+    
+    elementos_unicos = sorted(frecuencia.keys())
+    cantidad_por_elemento = [frecuencia[elemento] for elemento in elementos_unicos]
+    
+    return elementos_unicos, cantidad_por_elemento
 
-for i in lista:
-    if i in contador:
-        contador[i] +=1
-    else:
-        contador[1] =1
-
-for i, repeticiones in contador.items():
-    print(i, ":", repeticiones)
+print(ordenar_y_contar(lista))
